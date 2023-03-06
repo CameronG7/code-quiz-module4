@@ -1,0 +1,10 @@
+#quizMain{
+    display: none;
+}
+/* timer and quizmain should unhide */
+#timer{
+    display: none ;
+}
+#startQuiz{
+    display:unset; 
+}

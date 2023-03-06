@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		/>
+		<link rel="stylesheet" href="Assets/css/style.css">
+		<title>This Quiz Rocks</title>
+	</head>
+	<body>
+		<main id="root">
+			<header class="container-fluid bg-dark text-light mb-5 p-3">
+				<div class="d-flex align-items-center">
+					<h2>View Highscores</h2>
+					<h3 id="timer" class="ms-auto">timer here</h3>
+				</div>
+			</header>
+			
+			
+			<section class="container my-5">
+				<div 	class="row justify-content-center">
+					<div id="intro">
+						<!-- adding an id called intro to this wouldn't allow the hide functionality i wanted so i wrapped it -->
+						<div class="d-grid gap-2 col-6 mx-auto" style="display: inline;"> 
+							<section class="d-flex justify-content-center">
+								<h1>Can you solve this quiz? I bet not! </h1>
+							</section>
+							<button id="startQuiz" class="btn btn-danger " type="button">Start Quiz</button>
+						</div>
+					</div>
+					
+
+					<div id="quizMain" class="col-12 col-sm-8 col-lg-6 ">
+						<h3
+							data-questionNumber="1"	
+						><!--change this value to the number of the current question  -->
+							Question number 1
+						</h3>
+						<h5
+							class=""
+							data-question="question text here"  
+						> <!--change dataquestion to the text you want for the  -->
+							Question text here
+						</h5>
+						<!-- append question here -->
+                        <div class="d-grid gap-2 col-6 mx-auto ">
+                            <button class="btn btn-primary answer" type="button" data-answerOption="1" data-answerText="" >Button</button>
+                            <button class="btn btn-primary answer" type="button" data-answerOption="2" data-answerText="" >Button</button>
+                            <button class="btn btn-primary answer" type="button" data-answerOption="3" data-answerText="" >Button</button>
+                            <button class="btn btn-primary answer" type="button" data-answerOption="4" data-answerText="" >Button</button>
+
+                        </div>
+
+					</div>
+
+					<div id="score" style="display: none;">
+						<div class="d-grid gap-2 col-6 mx-auto">
+							<form>
+
+								<h2>All done!</h2>
+								<h5></h5>
+
+								<div class="mb-3">
+								  <label for="exampleInputEmail1" class="form-label">Enter Initials:</label>
+								  <input type="text" class="form-control" id="input" aria-describedby="emailHelp">
+								  
+								</div>
+						
+								<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+							  </form>
+						</div>
+					</div>
+					<div id="scoreboard">
+
+
+
+
+						
+					</div>
+
+				</div>
+			</section>
+		</main>
+        
+		<script
+			src="https://code.jquery.com/jquery-3.6.3.min.js"
+			integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+			crossorigin="anonymous"
+		></script>
+		<script src="./Assets/js/script.js"></script>
+	</body>
+</html>
