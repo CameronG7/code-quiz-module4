@@ -8,3 +8,7 @@
 #startQuiz{
     display:unset; 
 }
+p{
+    background-color: rgba(129, 159, 159, 0.5);
+    
+}

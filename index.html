@@ -21,7 +21,7 @@
 		<main id="root">
 			<header class="container-fluid bg-dark text-light mb-5 p-3">
 				<div class="d-flex align-items-center">
-					<h2>View Highscores</h2>
+					<h2 >View Highscores</h2>
 					<h3 id="timer" class="ms-auto">timer here</h3>
 				</div>
 			</header>
@@ -80,8 +80,16 @@
 							  </form>
 						</div>
 					</div>
-					<div id="scoreboard">
+					<div id="scoreboard" class="row" style="display: none;">
+						<h3>Highscores</h3>
+						<div id="hiHolder">
 
+						</div>
+
+						<div class="d-grid mx-auto">
+							<button id="reset" class="btn btn-primary">goback</button>
+							<button id="clear" class="btn btn-danger"> clear Scores</button>
+						</div>
 
 
 
@@ -90,7 +98,7 @@
 
 				</div>
 			</section>
-		</main>
+		</main> 
         
 		<script
 			src="https://code.jquery.com/jquery-3.6.3.min.js"
