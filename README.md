@@ -2,7 +2,7 @@
 
 ## Description
 This project contains the 4th homework which is to create a coding quiz. In this homework I, from scratch using bootstrap, jquery and my own knowledge, 
-created a quiz that cycles through quesC
+created a quiz that cycles through questions while dynamically changing html, and saves the users score in a leaderboard. 
 
 ## Installation
 
@@ -20,7 +20,7 @@ Click the above link to see more
 
 ## Credits
 
-Just me, using the knowledge given to me in the UCB bootcamp.
+Jquery, Bootstrap, and snippets from the UCB bootcamp source code
 
 ## License
 
