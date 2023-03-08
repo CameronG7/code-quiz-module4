@@ -12,3 +12,6 @@ p{
     background-color: rgba(129, 159, 159, 0.5);
     
 }
+header h2:hover{
+    cursor: pointer;
+}

@@ -9,9 +9,10 @@ const introEl = $('#intro');
 const scoreEl = $('#score');
 const submitEl = $('#submit');
 const inputEl = $('#input');
-const finalEl = $('#scoreboard');
+const scoreboardEl = $('#scoreboard');
 const hiHoldEl = $('#hiHolder');
 const resetEl = $('#reset'); 
+const clearEl = $('#clear');
 
 // questions as an array of objects
 const questions =[
@@ -102,6 +103,7 @@ function questionChange(){
 
 startEl.on('click', function(event) { //resets and starts the timer, hides the start button, shows the questions and changes the questions to the first question
     secondsLeft = 60;
+    quesCount=0;
     startTimer();
     quizMainEl.show();
     introEl.hide();
@@ -137,6 +139,11 @@ function  startTimer() { //timer function
       if (quesCount > questions.length ){
         clearInterval(timerInterval); 
       }
+      
+      function stopTimer() {
+        clearInterval(timerInterval);
+    };
+    
   
     }, 1000);
   }
@@ -152,13 +159,11 @@ function  startTimer() { //timer function
 
 
 function handleSubmit(event) {//handle submit and save score to local storage with user initials
-     event.preventDefault();
-    
-    console.log(inputEl.val()); 
+    event.preventDefault();
     addUserHigh();
-    
+    inputEl.val("");
     scoreEl.hide();
-    finalEl.show();
+    scoreboardEl.show();
 };
 
 submitEl.on("click", handleSubmit);
@@ -171,38 +176,57 @@ function addUserHigh() {//base code from stackoverflow
             existingScores = []
         };
 
-        var newScore = {
+        if(inputEl.val()!=="")
+        {
+            var newScore = 
+            {
             "name": inputEl.val(),
             "score": score
-        };
+            };
+            if(newScore.name !== "")
+            {
+                existingScores.push(newScore);
+            }
+    }
 
         localStorage.setItem("newScore", JSON.stringify(newScore));
+        
         // Save back to local storage
 
+        
 
-        if(newScore.name !== ""){
-        existingScores.push(newScore);
-        }
-
-
-        console.log(existingScores[0].name);
-        hiHoldEl.empty();
+        hiHoldEl.empty(); //clears the high score before remaking the list, messy but works
         
         for (var i = 0; i < existingScores.length; i++) {
             var pEl = $('<p>');
             pEl.text(`${existingScores[i].name}: ${existingScores[i].score}`);
             hiHoldEl.append(pEl);
-             
-
+            // pEl = undefined; 
         }
         localStorage.setItem("allScores", JSON.stringify(existingScores));
     };
-    rootEl.children().children().children().eq(0).on('click', function(){
+
+    rootEl.children().children().children().eq(0).on('click', function(){ //scoreboard shower in header
         addUserHigh();
+        quesCount = questions.length + 1;
+        timerEl.hide();
+        scoreboardEl.show();
         quizMainEl.hide();
         scoreEl.hide();
-        finalEl.show();
         startEl.hide();
         introEl.hide();
-        rootEl.children().children().eq(0).hide();
+        
     });
+
+    resetEl.on('click', function(){
+        introEl.show();
+        scoreboardEl.hide();
+        startEl.show();
+    });
+
+    clearEl.on('click', function(){
+        hiHoldEl.empty();
+        localStorage.removeItem("allScores");
+        addUserHigh();
+    });
+  
