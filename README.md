@@ -8,11 +8,12 @@ created a quiz that cycles through quesC
 
 No installation necessary, just click the link below!
 
-[Website](https://camerong7.github.io/passwordGenarator_module3/)
+[Website](https://camerong7.github.io/code-quiz-module4/)
 
 ## Usage
 
-![03-javascript-homework-demo](https://user-images.githubusercontent.com/122698132/221371494-1e2c72e6-1d0d-412d-88b1-0bddfc7ea374.png)
+<img width="1929" alt="mod 4" src="https://user-images.githubusercontent.com/122698132/223877539-23803aa1-c58b-464b-986a-f46926d38ac5.png">
+
 
 
 Click the above link to see more
