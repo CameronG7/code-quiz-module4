@@ -77,15 +77,13 @@ let quesCount = 0;
 let secondsLeft = 10;
 let score = 0;
 let solution = "21432";
-const userHighScore = [];
-
 
 
 function questionChange(){
     if(quesCount === questions.length) //if at the end of quiz, sets score, ends quiz,
         {
             score = secondsLeft;
-            timerEl.hide();
+            timerEl.hide(); // using jquery to hide various elements 
             quizFinish();
             console.log(score);
         }
@@ -136,15 +134,10 @@ function  startTimer() { //timer function
         clearInterval(timerInterval);
         quizFinish()
       }
-      if (quesCount > questions.length ){
+      if (quesCount > questions.length ){ //ends time if all questions are answered
         clearInterval(timerInterval); 
       }
-      
-      function stopTimer() {
-        clearInterval(timerInterval);
-    };
     
-  
     }, 1000);
   }
 
@@ -166,9 +159,6 @@ function handleSubmit(event) {//handle submit and save score to local storage wi
     scoreboardEl.show();
 };
 
-submitEl.on("click", handleSubmit);
-
-
 function addUserHigh() {//base code from stackoverflow
         // Parse any JSON previously stored in allEntries
         var existingScores = JSON.parse(localStorage.getItem("allScores"));
@@ -187,9 +177,9 @@ function addUserHigh() {//base code from stackoverflow
             {
                 existingScores.push(newScore);
             }
-    }
+        }
 
-        localStorage.setItem("newScore", JSON.stringify(newScore));
+        localStorage.setItem("newScore", JSON.stringify(newScore)); // save newest score to local storage
         
         // Save back to local storage
 
@@ -197,18 +187,19 @@ function addUserHigh() {//base code from stackoverflow
 
         hiHoldEl.empty(); //clears the high score before remaking the list, messy but works
         
-        for (var i = 0; i < existingScores.length; i++) {
+        for (var i = 0; i < existingScores.length; i++) { 
+            // for each score in the array makes a p tag and sets the text to the name and score of the current element then appends to highscore list
             var pEl = $('<p>');
             pEl.text(`${existingScores[i].name}: ${existingScores[i].score}`);
             hiHoldEl.append(pEl);
-            // pEl = undefined; 
+           
         }
-        localStorage.setItem("allScores", JSON.stringify(existingScores));
+        localStorage.setItem("allScores", JSON.stringify(existingScores)); //resave high scores to local storage
     };
 
     rootEl.children().children().children().eq(0).on('click', function(){ //scoreboard shower in header
         addUserHigh();
-        quesCount = questions.length + 1;
+        quesCount = questions.length + 1; // ends timer when high score is clicked while the quiz is running
         timerEl.hide();
         scoreboardEl.show();
         quizMainEl.hide();
@@ -218,15 +209,17 @@ function addUserHigh() {//base code from stackoverflow
         
     });
 
-    resetEl.on('click', function(){
+    resetEl.on('click', function(){ //resets the quiz
         introEl.show();
         scoreboardEl.hide();
         startEl.show();
     });
 
-    clearEl.on('click', function(){
+    clearEl.on('click', function(){ // clears local storage and the highscore list
         hiHoldEl.empty();
         localStorage.removeItem("allScores");
         addUserHigh();
     });
+
+    submitEl.on("click", handleSubmit);
   
